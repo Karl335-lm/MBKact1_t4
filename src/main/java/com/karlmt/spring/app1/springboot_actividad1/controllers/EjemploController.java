@@ -1,20 +1,22 @@
 package com.karlmt.spring.app1.springboot_actividad1.controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller 
+@RestController
+@RequestMapping("/api/ejemplo")
 public class EjemploController {
 
-   
- @GetMapping("/detalles_info")
-public String info(Map<String, Object> model) {
-    model.put("Titulo", "Servidor en linea");
-    model.put("Servidor", "Informaticonfig");
-    model.put("Ip", "192.168.0.19");
-    return "detalles_info";
-}
+    @GetMapping("/detalles_info")
+    public Map<String, Object> info() {
+        Map<String, Object> model = new HashMap<>();
+        model.put("Titulo", "Servidor en linea");
+        model.put("Servidor", "Informaticonfig");
+        model.put("Ip", "192.168.0.19");
+        return model;
+    }
 }
